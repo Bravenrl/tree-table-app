@@ -1,0 +1,17 @@
+@import '/src/vars.scss';
+
+.tab {
+  margin-left: 19px;
+
+  &.active {
+    border-bottom: 2px solid;
+    color: $text-white;
+  }
+
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}

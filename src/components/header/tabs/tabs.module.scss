@@ -1,0 +1,19 @@
+@import '/src/vars.scss';
+
+.tabs {
+  flex-grow: 1;
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    color: $text-gray;
+
+    li {
+      height: 100%;
+    }
+
+    a:hover {
+      color: $text-white;
+    }
+  }
+}

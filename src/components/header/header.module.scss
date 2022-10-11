@@ -1,0 +1,8 @@
+@import '/src/vars.scss';
+
+.header {
+    display: flex;
+    border: 1px solid $stroke-gray;
+    min-height: 43px;
+    padding: 0 20px 0 10px;
+}
