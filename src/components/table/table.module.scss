@@ -14,7 +14,13 @@
       padding-left: 12px;
     }
 
-    .level {
+ 
+    th:first-child {
+      width: 0;
+      padding-right: 40px;
+    }
+
+    td:first-child,  {
       width: 0;
       padding-right: 34px;
     }

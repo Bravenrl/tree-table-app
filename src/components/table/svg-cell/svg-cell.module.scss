@@ -1,0 +1,17 @@
+@import '/src/vars.scss';
+.icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+
+  span {
+    position: absolute;
+    font-weight: 600;
+    top: 5px;
+    font-size: 10px;
+    color: $background-dark;
+  }
+}
