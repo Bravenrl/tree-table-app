@@ -1,11 +1,15 @@
-import './App.module.css';
+import styles from './App.module.scss';
 import Header from './components/header/header';
+import Panel from './components/panel/panel';
 
 function App() {
   return (
-   <Header/>
-
-
+    <>
+      <Header />
+      <div className={styles.projectWrapper}>
+        <Panel />
+      </div>
+    </>
   );
 }
 

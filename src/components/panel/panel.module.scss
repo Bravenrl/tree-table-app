@@ -1,0 +1,11 @@
+@import '/src/vars.scss';
+
+.panel {
+  display: flex;
+  width: 12.2%;
+  min-width: 234px;
+  height: 100%;
+  flex-direction: column;
+  border-left: 1px solid $stroke-gray;
+  border-right: 1px solid $stroke-gray;
+}

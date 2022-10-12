@@ -1,0 +1,25 @@
+@import '/src/vars.scss';
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding-left: 20px;
+
+  &.active, &:hover {
+    background-color: $background-select;
+  }
+
+  a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    span {
+        margin-left: 14px;
+    }
+  }
+
+}

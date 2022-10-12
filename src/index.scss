@@ -12,6 +12,13 @@ body {
   font-size: 14px;
   line-height: 16px;
   color: $text-white;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 ul {

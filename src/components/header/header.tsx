@@ -1,4 +1,4 @@
-import MenuIcon from '@mui/icons-material/Menu';
+import AppsIcon from '@mui/icons-material/Apps';
 import ReplyIcon from '@mui/icons-material/Reply';
 import styles from './header.module.scss';
 import TabSvg from './tabs/tab-svg/tab-svg';
@@ -13,7 +13,7 @@ function Header(): JSX.Element {
     <header className={styles.header}>
       <Tabs>
         <TabSvg>
-          <MenuIcon />
+          <AppsIcon />
         </TabSvg>
         <TabSvg>
           <ReplyIcon />
