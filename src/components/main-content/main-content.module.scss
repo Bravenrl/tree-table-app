@@ -1,0 +1,23 @@
+@import '/src/vars.scss';
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+
+  .title {
+    display: flex;
+    width: max-content;
+    height: $header-hight;
+    margin: 0;
+    padding: 0 15px;
+    border-right: 1px solid $stroke-gray;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+  }
+}

@@ -1,0 +1,19 @@
+@import '/src/vars.scss';
+
+.tableHeader {
+  margin-left: 10px;
+  margin-right: 10px;
+
+ 
+
+  th {
+    text-align: start;
+    color: $text-gray;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
