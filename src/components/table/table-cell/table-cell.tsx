@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import TableInput from '../table-input/table-input';
 import styles from './table-cell.module.scss';
 
@@ -10,30 +10,25 @@ type TableCellProps = {
   type: string;
 };
 
-function TableCell({
-  isEdit,
-  value,
-  setIsEdit,
-  isNewRow,
-  type,
-}: TableCellProps): JSX.Element {
-  const [currentValue, setCurrentValue] = useState<string>(value.toString());
-
+const RefTableCell = React.forwardRef(function TableCell(
+  { isEdit, value, setIsEdit, isNewRow, type }: TableCellProps,
+  ref: React.Ref<HTMLInputElement> | undefined
+): JSX.Element {
   return (
     <td className={styles.cell}>
       {isEdit ? (
         <TableInput
           type={type}
-          value={currentValue}
-          setCurrentValue={setCurrentValue}
+          value={value.toString()}
           setIsEdit={setIsEdit}
           isNewRow={isNewRow}
+          ref={ref}
         />
       ) : (
-        <span>{currentValue}</span>
+        <span>{value}</span>
       )}
     </td>
   );
-}
+});
 
-export default TableCell;
+export default RefTableCell;

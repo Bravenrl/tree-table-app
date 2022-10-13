@@ -1,21 +1,18 @@
+import React from 'react';
 import { usePlaceholder } from '../../../hooks/use-placeholder';
 import styles from './table-input.module.scss';
 
 type TableInputProps = {
   value: string;
   setIsEdit?: (arg: boolean) => void;
-  setCurrentValue: (arg: string) => void;
   isNewRow?: boolean;
   type: string;
 };
 
-function TableInput({
-  value,
-  setIsEdit,
-  setCurrentValue,
-  isNewRow,
-  type,
-}: TableInputProps): JSX.Element {
+const RefTableInput = React.forwardRef(function TableInput(
+  { value, setIsEdit, isNewRow, type }: TableInputProps,
+  ref: React.Ref<HTMLInputElement> | undefined
+): JSX.Element {
   const placeholder = usePlaceholder(type);
 
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
@@ -38,18 +35,16 @@ function TableInput({
 
   return (
     <input
+      ref={ref}
       className={styles.input}
       required
       type={'text'}
-      onChange={(event) => {
-        setCurrentValue(event.target.value);
-      }}
-      value={value}
+      defaultValue={value}
       onKeyDown={handleKeyDown}
       autoFocus={isNewRow && type === 'title'}
       placeholder={placeholder}
     />
   );
-}
+});
 
-export default TableInput;
+export default RefTableInput;

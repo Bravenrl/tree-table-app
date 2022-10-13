@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { createRef, useState } from 'react';
 import { OptionData } from '../../../assets/types';
-import { useOutsideClick } from '../../../hooks/use-outside-click';
 import { useWidth } from '../../../hooks/use-width';
 import ParentRow from '../parent-row/parent-row';
 import SvgCell from '../svg-cell/svg-cell';
@@ -17,6 +16,11 @@ function ChildrenRow({ row }: ChildrenRowProps): JSX.Element {
   const isNewRow = row.title === '';
   const [isEdit, setIsEdit] = useState(isNewRow);
   const { lineWidth, paddingLeft } = useWidth(row.level);
+  const titleRef = createRef<HTMLInputElement>();
+  const unitRef = createRef<HTMLInputElement>();
+  const quantityRef = createRef<HTMLInputElement>();
+  const priceRef = createRef<HTMLInputElement>();
+  const totalRef = createRef<HTMLInputElement>();
 
   const handleDoubleClick = (
     evt: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -42,21 +46,30 @@ function ChildrenRow({ row }: ChildrenRowProps): JSX.Element {
           style={{ width: lineWidth + 2, left: paddingLeft + 1 }}
         ></div>
       )}
-      <div className={styles.row} onDoubleClick={handleDoubleClick} >
-        <SvgCell isRow={isRow} level={row.level ?? 1} isEdit={isEdit}/>
-        <TableCell value={row.title} isEdit={isEdit} setIsEdit={setIsEdit} type={'title'}/>
+      <div className={styles.row} onDoubleClick={handleDoubleClick}>
+        <SvgCell isRow={isRow} level={row.level ?? 1} isEdit={isEdit} />
+        <TableCell
+          value={row.title}
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
+          type={'title'}
+          ref={titleRef}
+        />
         {isRow ? (
           <TableCell
-            value={isRow ? row.unit : ''}
+            value={row.unit}
             isEdit={isEdit}
             setIsEdit={setIsEdit}
-            type={'unit'} />
+            type={'unit'}
+            ref={unitRef}
+          />
         ) : (
           <span></span>
         )}
         {isRow ? (
           <TableCell
-            value={isRow ? row.quantity : ''}
+            ref={quantityRef}
+            value={row.quantity}
             isEdit={isEdit}
             setIsEdit={setIsEdit}
             type={'quantity'}
@@ -66,15 +79,16 @@ function ChildrenRow({ row }: ChildrenRowProps): JSX.Element {
         )}
         {isRow ? (
           <TableCell
-            value={isRow ? row.unitPrice : ''}
+            value={row.unitPrice}
             isEdit={isEdit}
             setIsEdit={setIsEdit}
             type={'unitPrice'}
+            ref={priceRef}
           />
         ) : (
           <span></span>
         )}
-        <TableCell value={row.price} type={'price'}/>
+        <TableCell value={row.price} type={'price'} ref={totalRef} />
       </div>
       {row.children?.length && <ParentRow items={row.children} />}
     </tr>
