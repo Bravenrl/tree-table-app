@@ -5,27 +5,12 @@
   align-items: center;
   height: 100%;
   box-sizing: border-box;
-
-  .vertical {
-    position: absolute;
-    width: 1px;
-    background-color: $connection-line-gray;
-    bottom: 12px;
-    left: -12px;
-  }
-
-  .horizontal {
-    position: absolute;
-    height: 1px;
-    background-color: $connection-line-gray;
-    left: -12px;
-    z-index: 1;
-  }
+  z-index: 1;
 
   span {
     position: absolute;
     font-weight: 600;
-    top: 5px;
+    top: 23px;
     font-size: 10px;
     color: $background-dark;
   }

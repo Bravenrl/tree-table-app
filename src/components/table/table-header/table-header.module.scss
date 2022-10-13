@@ -1,13 +1,19 @@
 @import '/src/vars.scss';
 
-.tableHeader {
+.header {
   margin-left: 10px;
   margin-right: 10px;
+  border-collapse: collapse;
+  width: 100%;
 
- 
+  .row {
+    display: grid;
+    grid-template-columns: auto minmax(200px, 1fr) repeat(4, 200px);
+    height: $row-hight;
+    padding-left: 12px;
+  }
 
   th {
-    text-align: start;
     color: $text-gray;
     font-style: normal;
     font-weight: 400;
@@ -15,5 +21,15 @@
     line-height: 130%;
     padding-top: 12px;
     padding-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  
+    span {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
+
 }

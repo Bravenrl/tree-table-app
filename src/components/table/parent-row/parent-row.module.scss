@@ -1,3 +1,17 @@
+@import '/src/vars.scss';
+
 .parent {
   width: 100%;
+  position: relative;
+  border-collapse: collapse;
+
+  .vertical {
+    position: absolute;
+    width: 1px;
+    height: calc(100% - 7px) ;
+    background-color: $connection-line-gray;
+    bottom: 30px;
+    left: 0px;
+    z-index: 1;
+  } 
 }

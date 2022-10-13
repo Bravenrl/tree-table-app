@@ -1,12 +1,21 @@
 @import '/src/vars.scss';
 .children {
+  position: relative;
+
   .row {
     display: grid;
     grid-template-columns: auto minmax(200px, 1fr) repeat(4, 200px);
     height: $row-hight;
+    padding-left: 12px;
+    border-top: 1px solid $stroke-gray;
+  }
 
-    & > div {
-      padding-left: 12px;
-    }
+  .horizontal {
+    position: absolute;
+    height: 1px;
+    background-color: $connection-line-gray;
+    z-index: 0;
+    top: 30px;
+    z-index: 1;
   }
 }

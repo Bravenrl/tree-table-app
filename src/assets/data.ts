@@ -72,6 +72,26 @@ export const data: RowData[] = [
     parent: 5,
     type: 'level',
   },
+  {
+    id: 8,
+    title: 'title7',
+    unit: '',
+    quantity: 0,
+    unitPrice: 0,
+    price: 0,
+    parent: 1,
+    type: 'level',
+  },
+  {
+    id: 9,
+    title: 'title8',
+    unit: 'bar',
+    quantity: 1750,
+    unitPrice: 108.07,
+    price: 189122.5,
+    parent: 3,
+    type: 'row',
+  },
 ];
 
 export const { optionData, maxLevel } = dataToTree(data);

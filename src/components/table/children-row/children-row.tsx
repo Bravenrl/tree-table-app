@@ -1,4 +1,5 @@
 import { OptionData } from '../../../assets/types';
+import { useWidth } from '../../../hooks/use-width';
 import ParentRow from '../parent-row/parent-row';
 import SvgCell from '../svg-cell/svg-cell';
 import TableCell from '../table-cell/table-cell';
@@ -10,9 +11,17 @@ type ChildrenRowProps = {
 
 function ChildrenRow({ row }: ChildrenRowProps): JSX.Element {
   const isRow = row.type === 'row';
+  const isRoot = row.level === 1;
+  const { lineWidth, paddingLeft } = useWidth(row.level);
 
   return (
-    <li className={styles.children}>
+    <tr className={styles.children}>
+      {!isRoot && (
+        <div
+          className={styles.horizontal}
+          style={{ width: lineWidth + 2, left: paddingLeft + 1 }}
+        ></div>
+      )}
       <div className={styles.row}>
         <SvgCell isRow={isRow} level={row.level ?? 1} />
         <TableCell value={row.title} isEditable />
@@ -22,7 +31,7 @@ function ChildrenRow({ row }: ChildrenRowProps): JSX.Element {
         <TableCell value={row.price} />
       </div>
       {row.children?.length && <ParentRow items={row.children} />}
-    </li>
+    </tr>
   );
 }
 

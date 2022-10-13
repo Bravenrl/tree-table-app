@@ -1,19 +1,34 @@
+import { maxLevel } from '../../../assets/data';
+import { svgWidth } from '../../../const';
 import styles from './table-header.module.scss';
 
-type TableHeaderProps = {};
-
 function TableHeader(): JSX.Element {
+  const width = (maxLevel + 1) * svgWidth + 30;
   return (
-    <thead className={styles.tableHeader}>
+    <table className={styles.header}>
       <tr>
-        <th scope='col'>Уровень</th>
-        <th scope='col'>Наименование работ</th>
-        <th scope='col'>Ед. изм</th>
-        <th scope='col'>Количество</th>
-        <th scope='col'>Цена за ед.</th>
-        <th scope='col'>Стоимость</th>
+        <div className={styles.row}>
+          <th style={{ width }}>
+            <span>Уровень</span>
+          </th>
+          <th>
+            <span>Наименование работ</span>
+          </th>
+          <th>
+            <span>Ед. изм</span>
+          </th>
+          <th>
+            <span>Количество</span>
+          </th>
+          <th>
+            <span>Цена за ед.</span>
+          </th>
+          <th>
+            <span>Стоимость</span>
+          </th>
+        </div>
       </tr>
-    </thead>
+    </table>
   );
 }
 
