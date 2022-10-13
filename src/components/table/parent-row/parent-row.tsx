@@ -10,6 +10,7 @@ type ParentRowProps = {
 function ParentRow({ items }: ParentRowProps): JSX.Element {
   const isRoot = items[0].level === 1;
   const { paddingLeft } = useWidth(items[0].level);
+  
   return (
     <table className={styles.parent}>
       {!isRoot && (

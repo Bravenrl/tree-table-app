@@ -7,9 +7,10 @@ import DropdownButton from '../../ui/dropdown-button/dropdown-button';
 type SvgCellProps = {
   isRow: boolean;
   level: number;
+  isEdit:boolean;
 };
 
-function SvgCell({ isRow, level }: SvgCellProps): JSX.Element {
+function SvgCell({ isRow, level, isEdit }: SvgCellProps): JSX.Element {
   const { paddingLeft, width } = useWidth(level);
 
   return (
@@ -20,7 +21,7 @@ function SvgCell({ isRow, level }: SvgCellProps): JSX.Element {
         <div className={styles.folder}>
           <span style={{ left: paddingLeft + 9 }}>{level}</span>
           <FolderSvg fill={'#00FFFF'} />
-          <DropdownButton level={level} className={styles.button}/>
+          <DropdownButton level={level} className={styles.button} isDisabled={isEdit}/>
         </div>
       )}
     </td>

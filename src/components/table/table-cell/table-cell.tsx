@@ -3,31 +3,34 @@ import TableInput from '../table-input/table-input';
 import styles from './table-cell.module.scss';
 
 type TableCellProps = {
-  isEditable?: boolean;
+  isEdit?: boolean;
   value: string | number;
+  setIsEdit?: React.Dispatch<React.SetStateAction<boolean>>;
+  isNewRow?: boolean;
+  type: string;
 };
 
-function TableCell({ isEditable, value }: TableCellProps): JSX.Element {
-  const [isEdit, setIsEdit] = useState(false);
+function TableCell({
+  isEdit,
+  value,
+  setIsEdit,
+  isNewRow,
+  type,
+}: TableCellProps): JSX.Element {
   const [currentValue, setCurrentValue] = useState<string>(value.toString());
 
-  const handleDoubleClick = () => {
-    if (!isEditable) {
-      return;
-    }
-    setIsEdit(true);
-  };
-
   return (
-    <td className={styles.cell} onDoubleClick={handleDoubleClick}>
+    <td className={styles.cell}>
       {isEdit ? (
         <TableInput
+          type={type}
           value={currentValue}
           setCurrentValue={setCurrentValue}
           setIsEdit={setIsEdit}
+          isNewRow={isNewRow}
         />
       ) : (
-       <span>{currentValue}</span>
+        <span>{currentValue}</span>
       )}
     </td>
   );

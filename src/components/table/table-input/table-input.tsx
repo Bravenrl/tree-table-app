@@ -1,14 +1,28 @@
-import { useOutsideClick } from '../../../hooks/use-outside-click';
+import { usePlaceholder } from '../../../hooks/use-placeholder';
 import styles from './table-input.module.scss';
 
 type TableInputProps = {
   value: string;
-  setIsEdit: (arg: boolean) => void;
+  setIsEdit?: (arg: boolean) => void;
   setCurrentValue: (arg: string) => void;
+  isNewRow?: boolean;
+  type: string;
 };
 
-function TableInput({ value, setIsEdit, setCurrentValue }: TableInputProps): JSX.Element {
+function TableInput({
+  value,
+  setIsEdit,
+  setCurrentValue,
+  isNewRow,
+  type,
+}: TableInputProps): JSX.Element {
+  const placeholder = usePlaceholder(type);
+
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!setIsEdit) {
+      return;
+    }
+
     if (value === '') {
       return;
     }
@@ -22,27 +36,18 @@ function TableInput({ value, setIsEdit, setCurrentValue }: TableInputProps): JSX
     }
   };
 
-  const handleClickOutside = () => {
-    if (value === '') {
-      return;
-    }
-    setIsEdit(false);
-  };
-
-  const ref = useOutsideClick<HTMLInputElement>(handleClickOutside);
-
   return (
     <input
       className={styles.input}
       required
-      ref={ref}
       type={'text'}
       onChange={(event) => {
         setCurrentValue(event.target.value);
       }}
       value={value}
       onKeyDown={handleKeyDown}
-      autoFocus
+      autoFocus={isNewRow && type === 'title'}
+      placeholder={placeholder}
     />
   );
 }
