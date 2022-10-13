@@ -1,9 +1,10 @@
 import { RowData } from './types';
+import { dataToTree, setLevels } from './utils';
 
 export const data: RowData[] = [
   {
-    id: 0,
-    title: 'title1',
+    id: 1,
+    title: 'title0',
     unit: 'kg',
     quantity: 0,
     unitPrice: 0,
@@ -12,8 +13,8 @@ export const data: RowData[] = [
     type: 'level',
   },
   {
-    id: 1,
-    title: 'title2',
+    id: 2,
+    title: 'title1',
     unit: 'cm',
     quantity: 0,
     unitPrice: 0,
@@ -22,8 +23,8 @@ export const data: RowData[] = [
     type: 'level',
   },
   {
-    id: 2,
-    title: 'title3',
+    id: 3,
+    title: 'title2',
     unit: 'bar',
     quantity: 1750,
     unitPrice: 108.07,
@@ -32,8 +33,8 @@ export const data: RowData[] = [
     type: 'row',
   },
   {
-    id: 3,
-    title: 'title4',
+    id: 4,
+    title: 'title3',
     unit: 'm',
     quantity: 1200,
     unitPrice: 850,
@@ -42,8 +43,8 @@ export const data: RowData[] = [
     type: 'row',
   },
   {
-    id: 4,
-    title: 'title5',
+    id: 5,
+    title: 'title4',
     unit: '',
     quantity: 0,
     unitPrice: 0,
@@ -51,4 +52,26 @@ export const data: RowData[] = [
     parent: 1,
     type: 'level',
   },
+  {
+    id: 6,
+    title: 'title5',
+    unit: '',
+    quantity: 0,
+    unitPrice: 0,
+    price: 0,
+    parent: 2,
+    type: 'level',
+  },
+  {
+    id: 7,
+    title: 'title6',
+    unit: '',
+    quantity: 0,
+    unitPrice: 0,
+    price: 0,
+    parent: 5,
+    type: 'level',
+  },
 ];
+
+export const { optionData, maxLevel } = dataToTree(data);

@@ -19,7 +19,7 @@ function TableCell({ isEditable, value }: TableCellProps): JSX.Element {
   };
 
   return (
-    <td className={styles.cell} onDoubleClick={handleDoubleClick}>
+    <div className={styles.cell} onDoubleClick={handleDoubleClick}>
       {isEdit ? (
         <TableInput
           value={currentValue}
@@ -29,7 +29,7 @@ function TableCell({ isEditable, value }: TableCellProps): JSX.Element {
       ) : (
         currentValue
       )}
-    </td>
+    </div>
   );
 }
 

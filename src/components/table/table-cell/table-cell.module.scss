@@ -1,5 +1,5 @@
 .cell {
-  height: 60px;
+  height: 100%;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -7,4 +7,7 @@
   letter-spacing: 0.1px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
 }

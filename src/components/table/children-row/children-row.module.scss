@@ -1,0 +1,12 @@
+@import '/src/vars.scss';
+.children {
+  .row {
+    display: grid;
+    grid-template-columns: auto minmax(200px, 1fr) repeat(4, 200px);
+    height: $row-hight;
+
+    & > div {
+      padding-left: 12px;
+    }
+  }
+}

@@ -1,25 +1,15 @@
-import { data } from '../../../assets/data';
+import { optionData } from '../../../assets/data';
+import ParentRow from '../parent-row/parent-row';
 import SvgCell from '../svg-cell/svg-cell';
 import TableCell from '../table-cell/table-cell';
 import styles from './table-body.module.scss';
 
 function TableBody(): JSX.Element {
+  console.log(optionData);
   return (
-    <tbody className={styles.tableBody}>
-      {data.map((row, index) => {
-        const isRow = row.type === 'row'
-        return (
-          <tr key={row.id}>
-            <SvgCell parent={row.parent} isRow={isRow} level={++index}/>
-            <TableCell value={row.title} isEditable />
-            <TableCell value={isRow?row.unit:''} />
-            <TableCell value={isRow?row.quantity:''} isEditable={isRow} />
-            <TableCell value={isRow?row.unitPrice:''} isEditable={isRow} />
-            <TableCell value={row.price} />
-          </tr>
-        );
-      })}
-    </tbody>
+    <div className={styles.tableBody}>
+      
+    </div>
   );
 }
 

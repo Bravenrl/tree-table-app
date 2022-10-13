@@ -2,10 +2,9 @@
 .icon {
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 24px;
+  height: 100%;
+  box-sizing: border-box;
 
   .vertical {
     position: absolute;

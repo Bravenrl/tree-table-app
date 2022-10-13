@@ -3,33 +3,5 @@
 .wrapper {
   border-top: 1px solid $stroke-gray;
   padding: 0 10px;
-  .table {
-    height: max-content;
-    border-collapse: collapse;
-    width: 100%;
-
-    tr td,
-    th {
-      border-bottom: 1px solid $stroke-gray;
-      padding-left: 12px;
-    }
-
- 
-    th:first-child {
-      width: 0;
-      padding-right: 40px;
-    }
-
-    td:first-child,  {
-      width: 0;
-      padding-right: 34px;
-    }
-
-    .quantity,
-    .unit,
-    .price,
-    .total {
-      width: 200px;
-    }
-  }
+  width: 100%;
 }

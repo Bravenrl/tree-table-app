@@ -1,34 +1,32 @@
 import styles from './svg-cell.module.scss';
 import { ReactComponent as FolderSvg } from '../../../assets/icons/folder.svg';
 import { ReactComponent as FileSvg } from '../../../assets/icons/file.svg';
+import { maxLevel } from '../../../assets/data';
+import { svgWidth } from '../../../const';
+// import { useSvgCell } from '../../../hooks/use-svg-cell';
 
 type SvgCellProps = {
   isRow: boolean;
-  parent: number | null;
   level: number;
 };
 
-function SvgCell({ isRow, parent, level }: SvgCellProps): JSX.Element {
-  const margin = parent ? 24 * parent : 0;
-  const position = parent ? level - parent : 0;
-  const height = 55*position;
-  const width = parent? 12 : 0;
-
+function SvgCell({ isRow, level }: SvgCellProps): JSX.Element {
+  // const { margin, height, width } = useSvgCell(parent, level);
+  const width = (maxLevel + 1) * svgWidth + 30;
+  const paddingLeft = level ? svgWidth * (level - 1) : 0;
   return (
-    <td>
-      <div className={styles.icon} style={{ marginLeft: margin }}>
-        <div className={styles.vertical} style={{height}}></div>
-        <div className={styles.horizontal} style={{width}}></div>
-        {isRow ? (
-          <FileSvg />
-        ) : (
-          <>
-            <span>{parent ? ++parent : 1}</span>
-            <FolderSvg fill={'#00FFFF'} />
-          </>
-        )}
-      </div>
-    </td>
+    <div className={styles.icon} style={{ width, paddingLeft }}>
+      {/* <div className={styles.vertical} style={{ height }}></div>
+      <div className={styles.horizontal} style={{ width }}></div> */}
+      {isRow ? (
+        <FileSvg />
+      ) : (
+        <>
+          <span>{level}</span>
+          <FolderSvg fill={'#00FFFF'} />
+        </>
+      )}
+    </div>
   );
 }
 
