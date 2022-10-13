@@ -7,11 +7,36 @@
   box-sizing: border-box;
   z-index: 1;
 
+  svg {
+    cursor: pointer;
+  }
+
   span {
+    cursor: pointer;
     position: absolute;
     font-weight: 600;
     top: 23px;
     font-size: 10px;
     color: $background-dark;
+  }
+
+  .folder {
+    display: flex;
+    background-color: transparent;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .folder:hover {
+    background-color: $background-label;
+  }
+
+  .button {
+    opacity: 0;
+  }
+
+  .folder:hover .button {
+    opacity: 1;
   }
 }

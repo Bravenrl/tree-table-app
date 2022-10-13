@@ -1,0 +1,30 @@
+@import '/src/vars.scss';
+.dropdown {
+  position: relative;
+  z-index: 100;
+
+  .menu {
+    position: absolute;
+    width: max-content;
+    background-color: $background-select;
+    left: 100%;
+    top: -70%;
+    border-radius: 5%;
+    z-index: 999;
+    font-size: 8px;
+    cursor: pointer;
+
+    li {
+      padding: 2px 5px;
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px solid black;
+    }
+
+    li:hover {
+      background-color: $stroke-gray;
+      color: $text-white;
+    }
+  }
+}

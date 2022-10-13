@@ -29,7 +29,7 @@ function TableInput({ value, setIsEdit, setCurrentValue }: TableInputProps): JSX
     setIsEdit(false);
   };
 
-  const ref = useOutsideClick(handleClickOutside);
+  const ref = useOutsideClick<HTMLInputElement>(handleClickOutside);
 
   return (
     <input
