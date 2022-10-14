@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIsEditMode } from '../../../store/app/app-selectors';
 import { OptionData } from '../../../assets/types';
 import { newInitialData } from '../../../assets/data';
-import { createRow } from '../../../store/app/app-slice';
+import { createRow, setMaxLevel } from '../../../store/app/app-slice';
 
 type DropdownButtonProps = {
   item: OptionData;
@@ -20,7 +20,7 @@ function DropdownButton({ className, item }: DropdownButtonProps): JSX.Element {
 
   const handleClickAdd = (type: 'level' | 'row', parent: number | null) => {
     const newRow = { ...newInitialData, type, parent };
-
+    dispatch(setMaxLevel(parent ? parent + 1 : 1));
     dispatch(createRow(newRow));
     setIsOpen(false);
   };

@@ -3,6 +3,10 @@
   position: relative;
   z-index: 100;
 
+  button {
+    cursor: pointer;
+  }
+
   .menu {
     position: absolute;
     width: max-content;
@@ -12,7 +16,6 @@
     border-radius: 5%;
     z-index: 999;
     font-size: 8px;
-    cursor: pointer;
 
     li {
       padding: 2px 5px;

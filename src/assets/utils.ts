@@ -2,7 +2,6 @@ import { OptionData, RowData } from './types';
 
 export const dataToTree = (data: RowData[]) => {
   const treeData: OptionData[] = [];
-  let maxLevel = 0;
   const cloneData = JSON.parse(JSON.stringify(data)) as Array<OptionData>;
 
   cloneData.forEach((item, i, arr) => {
@@ -13,50 +12,35 @@ export const dataToTree = (data: RowData[]) => {
 
       if (!parent.children) parent.children = [];
       parent.children.push(item);
-
-      maxLevel =
-        parent.children.length > maxLevel ? parent.children?.length : maxLevel;
     }
     item.currentParent = item.parent ?? null;
     delete item.parent;
   });
 
   setLevels(treeData);
-  return { treeData, maxLevel };
+
+  return treeData;
 };
 
-export const setLevels = (data: OptionData[], level = 0): OptionData[] => {
+export const setLevels = (data: OptionData[], level = 0): number => {
+  let maxLevel = 0;
   data.forEach((item) => {
     item.level = level + 1;
+    maxLevel = maxLevel<item.level ? item.level : maxLevel;
     if (item.children?.length) {
       setLevels(item.children, item.level);
     }
   });
-  return data;
+  return maxLevel;
 };
 
-// export const getLevel = (obj: OptionData): number => {
-//   if (!obj.children) return 1;
-//   let length = 0;
-//   let index = 0;
-//   obj.children.forEach((ch, i) => {
-//     if (!ch.children) return;
-//     if (ch.children?.length > length) {
-//       length = ch.children?.length;
-//       index = i;
-//     }
-//   });
-//   return getLevel(obj.children[index]) + 1;
-// };
+export const gerBooleanValues = (item: OptionData) => {
+  const isRow = item.type === 'row';
+  const isRoot = item.level === 1;
+  const isNewRow = item.title === '';
 
-export const getLevel = (obj: OptionData): number => {
-  if (!obj.children) return 1;
-  let length = 0;
-  obj.children.forEach((ch, i) => {
-    if (!ch.children) return;
-    if (ch.children?.length > length) {
-      length = ch.children?.length;
-    }
-  });
-  return length;
+  return { isRow, isRoot, isNewRow };
 };
+
+
+export const formatIntl = (number:number) => new Intl.NumberFormat('ru-RU', {maximumFractionDigits:2}).format(number);

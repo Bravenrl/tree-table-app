@@ -27,6 +27,7 @@ export type OptionData = Omit<RowData, 'parent'> & {
 export type InitialState = {
   data: RowData[];
   isEditMode: boolean;
+  maxLevel: number;
 };
 
 export type FormFields = {

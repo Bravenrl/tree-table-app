@@ -6,6 +6,7 @@ import { InitialState, NewRowData, RowData } from '../../assets/types';
 const initialState: InitialState = {
   data: initialData,
   isEditMode: true,
+  maxLevel: 1,
 };
 
 export const userSlice = createSlice({
@@ -17,16 +18,19 @@ export const userSlice = createSlice({
     },
 
     createRow: (state, { payload }: PayloadAction<NewRowData>) => {
-        saveRow(payload, state.data);
+      saveRow(payload, state.data);
     },
 
     editCurrentRow: (state, { payload }: PayloadAction<RowData>) => {
       editRow(payload, state.data);
+    },
+    setMaxLevel: (state, { payload }: PayloadAction<number>) => {
+      state.maxLevel = payload;
     },
   },
 });
 
 export const {
   reducer: userReducer,
-  actions: { setEditMode, createRow, editCurrentRow },
+  actions: { setEditMode, createRow, editCurrentRow, setMaxLevel },
 } = userSlice;

@@ -1,4 +1,4 @@
-import React from 'react';
+import { formatIntl } from '../../../assets/utils';
 import TableInput from '../table-input/table-input';
 import styles from './table-cell.module.scss';
 
@@ -20,7 +20,7 @@ function TableCell({
       {isEdit ? (
         <TableInput type={type} value={value.toString()} isNewRow={isNewRow} />
       ) : (
-        <span>{value}</span>
+        <span>{typeof value === 'number' ? formatIntl(value) : value}</span>
       )}
     </div>
   );

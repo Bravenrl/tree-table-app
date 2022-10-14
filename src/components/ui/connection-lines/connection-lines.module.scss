@@ -1,0 +1,26 @@
+@import '/src/vars.scss';
+
+.horizontal {
+  position: absolute;
+  height: 1px;
+  background-color: $connection-line-gray;
+  z-index: 0;
+  top: 30px;
+  z-index: 1;
+}
+
+.vertical {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: $connection-line-gray;
+  bottom: 30px;
+  left: 0px;
+  z-index: 1;
+}
+
+.vertical.last {
+  height: 60px;
+  bottom: 0;
+  top: -30px;
+}

@@ -20,8 +20,10 @@ function SvgCell({ isRow, item }: SvgCellProps): JSX.Element {
         <FileSvg />
       ) : (
         <div className={styles.folder}>
-          <span style={{ left: paddingLeft + 9 }}>{level}</span>
+          <div className={styles.wrapper}>
+          <span>{level}</span>
           <FolderSvg fill={'#00FFFF'} />
+          </div>
           <DropdownButton item={item} className={styles.button} />
         </div>
       )}

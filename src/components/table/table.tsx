@@ -5,7 +5,7 @@ import TableHeader from './table-header/table-header';
 import styles from './table.module.scss';
 
 function Table(): JSX.Element {
-  const { treeData } = useSelector(getTreeData);
+  const treeData = useSelector(getTreeData);
   return (
     <div className={styles.wrapper}>
       <TableHeader />

@@ -6,20 +6,6 @@
   height: 100%;
   box-sizing: border-box;
   z-index: 3;
-  
-
-  svg {
-    cursor: pointer;
-  }
-
-  span {
-    cursor: pointer;
-    position: absolute;
-    font-weight: 600;
-    top: 23px;
-    font-size: 10px;
-    color: $background-dark;
-  }
 
   .folder {
     display: flex;
@@ -27,8 +13,25 @@
     border-radius: 6px;
     justify-content: center;
     align-items: center;
+    position: relative;
+    cursor: pointer;
   }
-
+  .wrapper {
+   position: relative;
+    span {
+      cursor: pointer;
+      position: absolute;
+      font-weight: 600;
+      top: 50%;
+      font-size: 10px;
+      left: 50%;
+      color: $background-dark;
+      transform: translate(-50%, -50%);
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
   .folder:hover {
     background-color: $background-label;
   }
