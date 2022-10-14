@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FormFields, OptionData } from '../../../assets/types';
 import { useWidth } from '../../../hooks/use-width';
 import { getIsEditMode } from '../../../store/app/app-selectors';
-import { setEditMode } from '../../../store/app/app-slice';
+import { editCurrentRow, setEditMode } from '../../../store/app/app-slice';
 import ParentRow from '../parent-row/parent-row';
 import SvgCell from '../svg-cell/svg-cell';
 import TableCell from '../table-cell/table-cell';
@@ -31,7 +31,23 @@ function ChildrenRow({ item }: ChildrenRowProps): JSX.Element {
     evt
   ) => {
     evt.preventDefault();
-    console.log(evt.currentTarget.title.value);
+    const { title, unit, quantity, unitPrice } = evt.currentTarget;
+
+    const price = +quantity?.value * +unitPrice?.value;
+
+    const currentRow = {
+      id: item.id,
+      title: title.value,
+      unit: unit?.value ?? '',
+      quantity: quantity?.value ? +quantity?.value : 0,
+      unitPrice: unitPrice?.value ? +unitPrice?.value : 0,
+      price: price ? price : 0,
+      parent: item.currentParent || null,
+      type: item.type,
+    };
+
+    dispatch(editCurrentRow(currentRow));
+
     setIsEdit(false);
   };
 
@@ -48,15 +64,6 @@ function ChildrenRow({ item }: ChildrenRowProps): JSX.Element {
     if (isEditMode) return;
     setIsEdit(true);
   };
-
-  // const handleClickOutside = () => {
-  //   if (!isEdit) {
-  //     return;
-  //   }
-  //   setIsEdit(false);
-  // };
-
-  // const ref = useOutsideClick<HTMLDivElement>(handleClickOutside);
 
   return (
     <div className={styles.children}>
@@ -86,7 +93,11 @@ function ChildrenRow({ item }: ChildrenRowProps): JSX.Element {
           <span></span>
         )}
         {isRow ? (
-          <TableCell value={item.unitPrice} isEdit={isEdit} type={'unitPrice'} />
+          <TableCell
+            value={item.unitPrice}
+            isEdit={isEdit}
+            type={'unitPrice'}
+          />
         ) : (
           <span></span>
         )}

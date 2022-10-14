@@ -1,4 +1,4 @@
-import { RowData } from './types';
+import { NewRowData, RowData } from './types';
 import { dataToTree } from './utils';
 
 export const data: RowData[] = [
@@ -96,7 +96,6 @@ export const data: RowData[] = [
 
 export const { treeData, maxLevel } = dataToTree(data);
 
-
 export const initialData: RowData[] = [
   {
     id: 1,
@@ -108,4 +107,14 @@ export const initialData: RowData[] = [
     parent: null,
     type: 'level',
   },
-]
+];
+
+export const newInitialData: NewRowData = {
+  title: '',
+  unit: '',
+  quantity: 0,
+  unitPrice: 0,
+  price: 0,
+  parent: null,
+  type: 'level',
+};

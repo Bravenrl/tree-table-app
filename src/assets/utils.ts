@@ -22,7 +22,6 @@ export const dataToTree = (data: RowData[]) => {
   });
 
   setLevels(treeData)
-
   return { treeData, maxLevel };
 };
 

@@ -17,15 +17,16 @@ export const userSlice = createSlice({
     },
 
     createRow: (state, { payload }: PayloadAction<NewRowData>) => {
-      const {changed} = saveRow(payload, state.data)
-      state.data = changed;
+        saveRow(payload, state.data);
     },
 
-    editRow: (state, { payload }: PayloadAction<RowData>) => {
-      const {changed} = editRow(payload, state.data)
-      state.data = changed;
+    editCurrentRow: (state, { payload }: PayloadAction<RowData>) => {
+      editRow(payload, state.data);
     },
   },
 });
 
-export const { reducer: userReducer, actions: {setEditMode} } = userSlice;
+export const {
+  reducer: userReducer,
+  actions: { setEditMode, createRow, editCurrentRow },
+} = userSlice;
