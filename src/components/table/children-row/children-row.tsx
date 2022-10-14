@@ -8,12 +8,14 @@ import ParentRow from '../parent-row/parent-row';
 import SvgCell from '../svg-cell/svg-cell';
 import TableCell from '../table-cell/table-cell';
 import styles from './children-row.module.scss';
+import cx from 'classnames';
 
 type ChildrenRowProps = {
   item: OptionData;
+  isLast: boolean;
 };
 
-function ChildrenRow({ item }: ChildrenRowProps): JSX.Element {
+function ChildrenRow({ item, isLast }: ChildrenRowProps): JSX.Element {
   const isRow = item.type === 'row';
   const isRoot = item.level === 1;
   const isNewRow = item.title === '';
@@ -71,6 +73,12 @@ function ChildrenRow({ item }: ChildrenRowProps): JSX.Element {
         <div
           className={styles.horizontal}
           style={{ width: lineWidth + 2, left: paddingLeft + 1 }}
+        ></div>
+      )}
+      {!isRoot && (
+        <div
+          className={cx(styles.vertical, { [styles.last]: isLast })}
+          style={{ left: paddingLeft }}
         ></div>
       )}
       <form

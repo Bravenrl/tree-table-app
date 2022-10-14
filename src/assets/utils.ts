@@ -3,8 +3,8 @@ import { OptionData, RowData } from './types';
 export const dataToTree = (data: RowData[]) => {
   const treeData: OptionData[] = [];
   let maxLevel = 0;
-  const cloneData = JSON.parse(JSON.stringify(data)) as Array<OptionData>;  
-                                                      
+  const cloneData = JSON.parse(JSON.stringify(data)) as Array<OptionData>;
+
   cloneData.forEach((item, i, arr) => {
     if (item.parent === null) {
       treeData.push(item);
@@ -21,12 +21,12 @@ export const dataToTree = (data: RowData[]) => {
     delete item.parent;
   });
 
-  setLevels(treeData)
+  setLevels(treeData);
   return { treeData, maxLevel };
 };
 
 export const setLevels = (data: OptionData[], level = 0): OptionData[] => {
-   data.forEach((item) => {
+  data.forEach((item) => {
     item.level = level + 1;
     if (item.children?.length) {
       setLevels(item.children, item.level);
@@ -35,3 +35,28 @@ export const setLevels = (data: OptionData[], level = 0): OptionData[] => {
   return data;
 };
 
+// export const getLevel = (obj: OptionData): number => {
+//   if (!obj.children) return 1;
+//   let length = 0;
+//   let index = 0;
+//   obj.children.forEach((ch, i) => {
+//     if (!ch.children) return;
+//     if (ch.children?.length > length) {
+//       length = ch.children?.length;
+//       index = i;
+//     }
+//   });
+//   return getLevel(obj.children[index]) + 1;
+// };
+
+export const getLevel = (obj: OptionData): number => {
+  if (!obj.children) return 1;
+  let length = 0;
+  obj.children.forEach((ch, i) => {
+    if (!ch.children) return;
+    if (ch.children?.length > length) {
+      length = ch.children?.length;
+    }
+  });
+  return length;
+};
