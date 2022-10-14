@@ -4,6 +4,7 @@ import { ReactComponent as FileSvg } from '../../../assets/icons/file.svg';
 import { useWidth } from '../../../hooks/use-width';
 import DropdownButton from '../../ui/dropdown-button/dropdown-button';
 import { OptionData } from '../../../assets/types';
+import { COLORS } from '../../../assets/data';
 
 type SvgCellProps = {
   isRow: boolean;
@@ -22,7 +23,7 @@ function SvgCell({ isRow, item }: SvgCellProps): JSX.Element {
         <div className={styles.folder}>
           <div className={styles.wrapper}>
           <span>{level}</span>
-          <FolderSvg fill={'#00FFFF'} />
+          <FolderSvg fill={COLORS[level-1]} />
           </div>
           <DropdownButton item={item} className={styles.button} />
         </div>
