@@ -2,18 +2,19 @@ import styles from './dropdown-button.module.scss';
 import { ReactComponent as FileSvg } from '../../../assets/icons/file.svg';
 import { useState } from 'react';
 import { useOutsideClick } from '../../../hooks/use-outside-click';
+import { useSelector } from 'react-redux';
+import { getIsEditMode } from '../../../store/app/app-selectors';
+import { OptionData } from '../../../assets/types';
 
 type DropdownButtonProps = {
-  level: number;
+  item: OptionData;
   className: string;
-  isDisabled: boolean;
 };
 
 function DropdownButton({
-  level,
-  className,
-  isDisabled,
+  className, item
 }: DropdownButtonProps): JSX.Element {
+  const isEditMode = useSelector(getIsEditMode)
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClickOutside = () => {
@@ -27,7 +28,7 @@ function DropdownButton({
       className={`${styles.dropdown} ${className}`}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button type='button' ref={ref} disabled={isDisabled}>
+      <button type='button' ref={ref} disabled={isEditMode}>
         <FileSvg onClick={() => setIsOpen((prev) => !prev)} />
         {isOpen && (
           <ul className={styles.menu}>

@@ -1,9 +1,8 @@
-import { maxLevel } from '../../../assets/data';
-import { svgWidth } from '../../../const';
+import { useWidth } from '../../../hooks/use-width';
 import styles from './table-header.module.scss';
 
 function TableHeader(): JSX.Element {
-  const width = (maxLevel + 1) * svgWidth + 30;
+  const { width } = useWidth();
   return (
     <div className={styles.header}>
       <div className={styles.row}>

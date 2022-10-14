@@ -1,13 +1,13 @@
 import { OptionData, RowData } from './types';
 
 export const dataToTree = (data: RowData[]) => {
-  const optionData: OptionData[] = [];
+  const treeData: OptionData[] = [];
   let maxLevel = 0;
-  const cloneData = data.slice() as Array<OptionData>;
-
+  const cloneData = JSON.parse(JSON.stringify(data)) as Array<OptionData>;  
+                                                      
   cloneData.forEach((item, i, arr) => {
     if (item.parent === null) {
-      optionData.push(item);
+      treeData.push(item);
     } else {
       let parent = arr[(item.parent as number) - 1];
 
@@ -21,9 +21,9 @@ export const dataToTree = (data: RowData[]) => {
     delete item.parent;
   });
 
-  setLevels(optionData)
+  setLevels(treeData)
 
-  return { optionData, maxLevel };
+  return { treeData, maxLevel };
 };
 
 export const setLevels = (data: OptionData[], level = 0): OptionData[] => {

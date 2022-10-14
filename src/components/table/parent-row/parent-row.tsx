@@ -17,7 +17,7 @@ function ParentRow({ items }: ParentRowProps): JSX.Element {
         <div className={styles.vertical} style={{ left: paddingLeft }}></div>
       )}
       {items.map((item) => (
-        <ChildrenRow key={item.id} row={item} />
+        <ChildrenRow key={item.id} item={item} />
       ))}
     </div>
   );

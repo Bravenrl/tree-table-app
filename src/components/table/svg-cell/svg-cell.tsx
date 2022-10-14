@@ -3,14 +3,15 @@ import { ReactComponent as FolderSvg } from '../../../assets/icons/folder.svg';
 import { ReactComponent as FileSvg } from '../../../assets/icons/file.svg';
 import { useWidth } from '../../../hooks/use-width';
 import DropdownButton from '../../ui/dropdown-button/dropdown-button';
+import { OptionData } from '../../../assets/types';
 
 type SvgCellProps = {
   isRow: boolean;
-  level: number;
-  isEdit:boolean;
+  item: OptionData;
 };
 
-function SvgCell({ isRow, level, isEdit }: SvgCellProps): JSX.Element {
+function SvgCell({ isRow, item }: SvgCellProps): JSX.Element {
+  const level = item.level ?? 1;
   const { paddingLeft, width } = useWidth(level);
 
   return (
@@ -21,7 +22,7 @@ function SvgCell({ isRow, level, isEdit }: SvgCellProps): JSX.Element {
         <div className={styles.folder}>
           <span style={{ left: paddingLeft + 9 }}>{level}</span>
           <FolderSvg fill={'#00FFFF'} />
-          <DropdownButton level={level} className={styles.button} isDisabled={isEdit}/>
+          <DropdownButton item={item} className={styles.button} />
         </div>
       )}
     </div>

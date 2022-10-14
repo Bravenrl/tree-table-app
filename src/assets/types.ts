@@ -23,3 +23,15 @@ export type OptionData = Omit<RowData, 'parent'> & {
   parent?: number | null;
   level?: number;
 };
+
+export type InitialState = {
+  data: RowData[];
+  isEditMode: boolean;
+};
+
+export type FormFields = {
+  title: HTMLInputElement;
+  unit: HTMLInputElement;
+  quantity: HTMLInputElement;
+  unitPrice: HTMLInputElement;
+};

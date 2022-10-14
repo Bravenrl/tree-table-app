@@ -35,7 +35,7 @@ if (currentParentIndex === -1) return changedRows
 
 do {
             const currentParent = rows[currentParentIndex]
-    const children = rows.filter((v) => v.parent == currentParent.id)
+    const children = rows.filter((v) => v.parent === currentParent.id)
     const newPrice = children.reduce((acc, v) => acc + v.price, 0)
 
     if (currentParent.price !== newPrice) {
