@@ -12,14 +12,14 @@ function ParentRow({ items }: ParentRowProps): JSX.Element {
   const { paddingLeft } = useWidth(items[0].level);
   
   return (
-    <table className={styles.parent}>
+    <div className={styles.parent}>
       {!isRoot && (
         <div className={styles.vertical} style={{ left: paddingLeft }}></div>
       )}
       {items.map((item) => (
         <ChildrenRow key={item.id} row={item} />
       ))}
-    </table>
+    </div>
   );
 }
 

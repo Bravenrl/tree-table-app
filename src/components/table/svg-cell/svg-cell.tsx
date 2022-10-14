@@ -14,7 +14,7 @@ function SvgCell({ isRow, level, isEdit }: SvgCellProps): JSX.Element {
   const { paddingLeft, width } = useWidth(level);
 
   return (
-    <td className={styles.icon} style={{ width, paddingLeft }}>
+    <div className={styles.icon} style={{ width, paddingLeft }}>
       {isRow ? (
         <FileSvg />
       ) : (
@@ -24,7 +24,7 @@ function SvgCell({ isRow, level, isEdit }: SvgCellProps): JSX.Element {
           <DropdownButton level={level} className={styles.button} isDisabled={isEdit}/>
         </div>
       )}
-    </td>
+    </div>
   );
 }
 

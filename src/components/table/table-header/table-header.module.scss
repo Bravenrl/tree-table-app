@@ -11,25 +11,24 @@
     grid-template-columns: auto minmax(200px, 1fr) repeat(4, 200px);
     height: 40px;
     padding-left: 12px;
-  }
 
-  th {
-    color: $text-gray;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 130%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  
-    span {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
+    div {
+      color: $text-gray;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
     }
   }
-
 }

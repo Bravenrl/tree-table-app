@@ -5,30 +5,25 @@ import styles from './table-cell.module.scss';
 type TableCellProps = {
   isEdit?: boolean;
   value: string | number;
-  setIsEdit?: React.Dispatch<React.SetStateAction<boolean>>;
   isNewRow?: boolean;
   type: string;
 };
 
-const RefTableCell = React.forwardRef(function TableCell(
-  { isEdit, value, setIsEdit, isNewRow, type }: TableCellProps,
-  ref: React.Ref<HTMLInputElement> | undefined
-): JSX.Element {
+function TableCell({
+  isEdit,
+  value,
+  isNewRow,
+  type,
+}: TableCellProps): JSX.Element {
   return (
-    <td className={styles.cell}>
+    <div className={styles.cell}>
       {isEdit ? (
-        <TableInput
-          type={type}
-          value={value.toString()}
-          setIsEdit={setIsEdit}
-          isNewRow={isNewRow}
-          ref={ref}
-        />
+        <TableInput type={type} value={value.toString()} isNewRow={isNewRow} />
       ) : (
         <span>{value}</span>
       )}
-    </td>
+    </div>
   );
-});
+}
 
-export default RefTableCell;
+export default TableCell;
