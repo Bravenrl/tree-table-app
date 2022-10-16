@@ -23,7 +23,7 @@ function SvgCell({ isRow, item }: SvgCellProps): JSX.Element {
         <div className={styles.folder}>
           <div className={styles.wrapper}>
           <span>{level}</span>
-          <FolderSvg fill={COLORS[level-1]} />
+          <FolderSvg fill={COLORS[level%10]} />
           </div>
           <DropdownButton item={item} className={styles.button} />
         </div>

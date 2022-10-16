@@ -25,7 +25,7 @@ export const userSlice = createSlice({
       editRow(payload, state.data);
     },
     setMaxLevel: (state, { payload }: PayloadAction<number>) => {
-      state.maxLevel = payload;
+      state.maxLevel = payload > state.maxLevel ? payload : state.maxLevel;
     },
   },
 });

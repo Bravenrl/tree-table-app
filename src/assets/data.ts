@@ -1,16 +1,16 @@
 import { NewRowData, RowData } from './types';
 
 export const COLORS: string[] = [
-  '#5F98F5',
-  '#95FFAC',
-  '#ffff33',
-  '#ff8a33',
   '#ff3333',
   '#5F98F5',
   '#95FFAC',
   '#ffff33',
   '#ff8a33',
   '#ff3333',
+  '#5F98F5',
+  '#95FFAC',
+  '#ffff33',
+  '#ff8a33',
 ];
 
 export const initialData: RowData[] = [
